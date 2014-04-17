@@ -157,11 +157,19 @@ set( fc_sources
      ${SALSA_SRC}
      )
 
-     SET_PROPERTY( SOURCE 
+     SET_PROPERTY( SOURCE
                    vendor/salsa20/salsa20.s
                    PROPERTY LANGUAGE C)
 
-file(GLOB_RECURSE fc_headers ${CMAKE_CURRENT_SOURCE_DIR} 
+     SET_PROPERTY( SOURCE
+                   vendor/cyoencode-1.0.2/src/CyoDecode.c
+                   PROPERTY LANGUAGE C)
+
+     SET_PROPERTY( SOURCE
+                   vendor/cyoencode-1.0.2/src/CyoEncode.c
+                   PROPERTY LANGUAGE C)
+
+file(GLOB_RECURSE fc_headers ${CMAKE_CURRENT_SOURCE_DIR}
   *.hpp *.h)
 
 set( sources
@@ -190,12 +198,14 @@ ELSE()
 
   IF(APPLE)
     SET(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=c++11 -stdlib=libc++  -Wall" )
+  ELSE(FreeBSD)
+    SET(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=c++11 -stdlib=libc++  -Wall" )
   ELSE()
     target_compile_options(fc PUBLIC -std=c++11 -Wall -fnon-call-exceptions -Wno-unused-local-typedefs -fmax-errors=3)
     SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-local-typedefs -fmax-errors=3 ")
   ENDIF()
 ENDIF()
- 
+
 target_include_directories(fc
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${Boost_INCLUDE_DIR}

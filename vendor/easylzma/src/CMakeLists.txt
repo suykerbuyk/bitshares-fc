@@ -1,7 +1,7 @@
 # Written in 2009 by Lloyd Hilaiel
 #
 # License
-# 
+#
 # All the cruft you find here is public domain.  You don't have to credit
 # anyone to use this code, but my personal request is that you mention
 # Igor Pavlov for his hard, high quality work.
@@ -39,7 +39,7 @@ ADD_LIBRARY(easylzma_static STATIC ${SRCS} ${HDRS})
 
 # on win32 we'll need to setup exports correctly
 SET(sharedLibCompileFlags "-DEASYLZMA_SHARED -DEASYLZMA_BUILD")
-IF (APPLE)
+IF (APPLE OR FREEBSD)
   SET(sharedLibCompileFlags "${sharedLibCompileFlags} -fno-common")
 ENDIF (APPLE)
 

@@ -27,8 +27,8 @@ IF (${CMAKE_BUILD_TYPE} STREQUAL "Release")
 ENDIF (${CMAKE_BUILD_TYPE} STREQUAL "Release")
 
 SET(CMAKE_C_FLAGS "-Wall")
-IF (WIN32) 
-#  Commented out since pollutes Keyhotee linker settings 
+IF (WIN32)
+#  Commented out since pollutes Keyhotee linker settings
 #  SET(linkFlags "/PDB:NONE /INCREMENTAL:NO /OPT:NOREF /OPT:NOICF")
 #  SET(CMAKE_EXE_LINKER_FLAGS    "${linkFlags}"
 #      CACHE STRING "LZMA linker flags" FORCE)
