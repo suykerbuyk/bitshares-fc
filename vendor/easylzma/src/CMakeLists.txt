@@ -41,7 +41,7 @@ ADD_LIBRARY(easylzma_static STATIC ${SRCS} ${HDRS})
 SET(sharedLibCompileFlags "-DEASYLZMA_SHARED -DEASYLZMA_BUILD")
 IF (APPLE OR FREEBSD)
   SET(sharedLibCompileFlags "${sharedLibCompileFlags} -fno-common")
-ENDIF (APPLE)
+ENDIF (APPLE OR FREEBSD)
 
 #SET_TARGET_PROPERTIES(easylzma PROPERTIES
 #                      COMPILE_FLAGS ${sharedLibCompileFlags})
